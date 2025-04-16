@@ -19,18 +19,41 @@ No GUI, no bloat. Just pure shell power, neatly wrapped in one tool: `mdwn`.
 ---
 
 ## 🚀 Getting Started
-
-### Install For Ubuntu in Home Folder:
- 
+### Clone mdwn and make executable
 ```bash
 cd ~
 git clone https://github.com/arianggoro1234/mdwn.git
 chmod -R u+x mdwn
+```
+
+---
+
+### Install For Ubuntu in Home Folder:
+```bash
 ~/mdwn/./install_for_ubuntu.sh
 ```
+## Please exit before runing at Ubuntu OS ##
 
-### Run:
+### Run at Ubuntu OS:
 ```bash
 mdwn
-
 ```
+
+
+
+
+
+
+
+---
+## MacOS
+### Install For MacOS in Home Folder:
+```bash
+~/mdwn/./install_for_mac.sh
+```
+## Please exit before at MacOS ##
+### Run at MacOS :
+```bash
+mdwn
+```
+---
