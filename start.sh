@@ -23,13 +23,18 @@ function main_menu() {
           "Microk8s Operation"
           "PHP 56 Operation"
           "PHP 70 Operation"
-          "PHP 71 Operation"
           "PHP 72 Operation"
           "PHP 73 Operation"
           "PHP 74 Operation"
           "PHP 80 Operation"
           "PHP 81 Operation"
           "PHP 82 Operation"
+          "MariaDB Operation"
+          "MySQL Operation"
+          "Redis Operation"
+          "MongoDB Operation"
+          "Journalctl Operation"
+          "Log Operation"
         )
         PS3="Choose an option: "
         select _ in "${options[@]}"; do
@@ -53,6 +58,12 @@ function main_menu() {
                 17) ~/mdwn/commands/php80_operation.sh;;
                 18) ~/mdwn/commands/php81_operation.sh;;
                 19) ~/mdwn/commands/php82_operation.sh;;
+                20) ~/mdwn/commands/mariadb_operation.sh;;
+                21) ~/mdwn/commands/mysql_operation.sh;;
+                22) ~/mdwn/commands/redis_operation.sh;;
+                23) ~/mdwn/commands/mongodb_operation.sh;;
+                24) ~/mdwn/commands/journalctl_operation.sh;;
+                25) ~/mdwn/commands/tail_log_operation.sh;;
                 *) echo -e "${red}Invalid option${reset}" ;;
             esac
             break  # After executing a command, go back to the main menu
