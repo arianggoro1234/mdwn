@@ -67,7 +67,7 @@ function main_menu() {
                 23) ~/mdwn/commands/mongodb_operation.sh;;
                 24) ~/mdwn/commands/journalctl_operation.sh;;
                 25) ~/mdwn/commands/tail_log_operation.sh;;
-                26) ~/mdwn/commands/btop_operation.sh.sh;;
+                26) ~/mdwn/commands/btop_operation.sh;;
                 27) ~/mdwn/commands/ssh_operation.sh;;
                 28) ~/mdwn/commands/ftp_operation.sh;;
                 *) echo -e "${red}Invalid option${reset}" ;;
