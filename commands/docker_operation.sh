@@ -105,7 +105,7 @@ function docker_menu() {
             25)
                 read -rp "Container ID or name: " cid
                 read -rp "Command to execute: " cmd
-                docker exec -it "$cid" $cmd
+                docker exec -it "$cid" "$cmd"
                 ;;
             26) docker volume ls;;
             27)
