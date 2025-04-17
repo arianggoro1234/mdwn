@@ -35,6 +35,9 @@ function main_menu() {
           "MongoDB Operation"
           "Journalctl Operation"
           "Log Operation"
+          "Btop Monitoring"
+          "SSH Operation"
+          "FTP Operation"
         )
         PS3="Choose an option: "
         select _ in "${options[@]}"; do
@@ -64,6 +67,9 @@ function main_menu() {
                 23) ~/mdwn/commands/mongodb_operation.sh;;
                 24) ~/mdwn/commands/journalctl_operation.sh;;
                 25) ~/mdwn/commands/tail_log_operation.sh;;
+                26) ~/mdwn/commands/btop_operation.sh.sh;;
+                27) ~/mdwn/commands/ssh_operation.sh;;
+                28) ~/mdwn/commands/ftp_operation.sh;;
                 *) echo -e "${red}Invalid option${reset}" ;;
             esac
             break  # After executing a command, go back to the main menu
