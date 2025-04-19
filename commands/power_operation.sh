@@ -1,68 +1,56 @@
 #!/bin/bash
 
-# shellcheck source=./lib/alacarte.sh
-source "$(dirname "$0")/lib/alacarte.sh"
-
-# Fungsi untuk cek dan tawarkan instalasi screenfetch jika belum terpasang
-function check_install_screenfetch() {
-  if ! command -v screenfetch &> /dev/null; then
-    echo -e "${yellow}screenfetch is not installed.${reset}"
-    read -rp "Do you want to install it now? [Y/n]: " confirm
-    if [[ "$confirm" =~ ^[Yy]?$ ]]; then
-      sudo apt update && sudo apt install -y screenfetch
-    else
-      echo -e "${red}screenfetch is required to use this menu.${reset}"
-      return 1
-    fi
-  fi
-  return 0
-}
-
-# Menu screenfetch
-function screenfetch_menu() {
-  check_install_screenfetch || return
-
+function power_operations_menu() {
   local options=(
-    "Back to Main Menu"
-    "Run screenfetch (default)"
-    "Run with No ASCII Art"
-    "Run with ASCII Art Only"
-    "Run with Custom ASCII Distro"
-    "Run with Debug Output"
-    "Run with Specific Screenshot Command"
-    "Display Version Info"
-    "Display Help"
+    "Back to btop Menu"
+    "Reboot System"
+    "Shutdown System"
+    "Suspend System"
+    "Log Out Current User"
+    "Lock Screen"
   )
 
-  PS3="Choose an option for screenfetch: "
+  PS3="Choose a power operation: "
   select _ in "${options[@]}"; do
     case $REPLY in
       1) break ;;
-      2) screenfetch ;;
-      3) screenfetch -n ;;
-      4) screenfetch -A ;;
+      2)
+        echo -e "Rebooting system..."
+        sudo reboot
+        ;;
+      3)
+        echo -e "Shutting down system..."
+        sudo shutdown -h now
+        ;;
+      4)
+        if command -v systemctl &> /dev/null; then
+          echo -e "Suspending system..."
+          sudo systemctl suspend
+        else
+          echo -e "Suspend not supported on this system."
+        fi
+        ;;
       5)
-        read -rp "Enter distro name for ASCII art (e.g., Ubuntu, Arch): " distro
-        if [[ -z "$distro" ]]; then
-          echo -e "${red}You must provide a valid distro name.${reset}"
+        if command -v gnome-session-quit &> /dev/null; then
+          gnome-session-quit --logout --no-prompt
         else
-          screenfetch -A "$distro"
+          echo -e "Logout not supported on this system."
         fi
         ;;
-      6) screenfetch -v ;;
-      7)
-        read -rp "Enter custom screenshot command (e.g., scrot -d 5): " cmd
-        if [[ -z "$cmd" ]]; then
-          echo -e "${red}You must provide a valid screenshot command.${reset}"
+      6)
+        if command -v gnome-screensaver-command &> /dev/null; then
+          gnome-screensaver-command -l
+        elif command -v loginctl &> /dev/null; then
+          loginctl lock-session
         else
-          screenfetch -S "$cmd"
+          echo -e "Lock screen not supported on this system."
         fi
         ;;
-      8) screenfetch -V ;;
-      9) screenfetch -h ;;
-      *) echo -e "${red}Invalid option${reset}" ;;
+      *)
+        echo -e "Invalid option"
+        ;;
     esac
   done
 }
 
-screenfetch_menu
+power_operations_menu

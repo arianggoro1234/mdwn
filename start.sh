@@ -1,10 +1,8 @@
 #!/bin/bash
 
 # GLOBAL Helper
-# shellcheck source=./commands/lib/alacarte.sh
 source "$(dirname "$0")/commands/lib/alacarte.sh"
 
-# Main Menu
 function main_menu() {
     while true; do
         clear
@@ -43,7 +41,7 @@ function main_menu() {
         )
         PS3="Choose an option: "
         select _ in "${options[@]}"; do
-            case $REPLY in
+            case "$REPLY" in
                 1) echo "Goodbye." && exit 0;;
                 2) ~/mdwn/commands/mdwn_updater.sh;;
                 3) ~/mdwn/commands/directory_operation.sh;;
