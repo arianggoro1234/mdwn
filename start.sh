@@ -38,6 +38,11 @@ function main_menu() {
           "PostgresSQL Operation"
           "Redis Operation"
           "SSH Operation"
+          "Composer Operation"
+          "ZIP Operation"
+          "TAR Operation"
+          "Webmin Operation"
+          "Hestia Operation"
         )
         PS3="Choose an option: "
         select _ in "${options[@]}"; do
@@ -72,6 +77,11 @@ function main_menu() {
                 28) ~/mdwn/commands/postgresql_operation.sh;;
                 29) ~/mdwn/commands/redis_operation.sh;;
                 30) ~/mdwn/commands/ssh_operation.sh;;
+                31) ~/mdwn/commands/composer_operation.sh;;
+                32) ~/mdwn/commands/zip_operation.sh;;
+                33) ~/mdwn/commands/tar_operation.sh;;
+                34) ~/mdwn/commands/webmin_operation.sh;;
+                35) ~/mdwn/commands/hestia_operation.sh;;
                 *) echo -e "${red}Invalid option${reset}";;
             esac
             break

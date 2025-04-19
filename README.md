@@ -40,11 +40,15 @@ mdwn
 ```
 
 
+### Run at Ubuntu OS on curent folder:
+```bash
+mdwn .
+```
 
 
 
 
-
+<!-- 
 ---
 ## MacOS
 ### Install For MacOS in Home Folder:
@@ -56,4 +60,8 @@ mdwn
 ```bash
 mdwn
 ```
----
+### Run at MacOS on curent folder:
+```bash
+mdwn .
+```
+--- -->
