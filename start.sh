@@ -38,16 +38,17 @@ function main_menu() {
           "Btop Monitoring"
           "SSH Operation"
           "FTP Operation"
+          "Power Operaation"
         )
         PS3="Choose an option: "
         select _ in "${options[@]}"; do
             case $REPLY in
-                1) echo "Goodbye." && exit 0 ;;
-                2) ~/mdwn/commands/mdwn_updater.sh ;;
-                3) ~/mdwn/commands/directory_operation.sh ;;
-                4) ~/mdwn/commands/file_operation.sh ;;
-                5) ~/mdwn/commands/network_operation.sh ;;
-                6) ~/mdwn/commands/user_manager.sh ;;
+                1) echo "Goodbye." && exit 0;;
+                2) ~/mdwn/commands/mdwn_updater.sh;;
+                3) ~/mdwn/commands/directory_operation.sh;;
+                4) ~/mdwn/commands/file_operation.sh;;
+                5) ~/mdwn/commands/network_operation.sh;;
+                6) ~/mdwn/commands/user_manager.sh;;
                 7) ~/mdwn/commands/package_manager.sh;;
                 8) ~/mdwn/commands/docker_operation.sh;;
                 9) ~/mdwn/commands/apache_operation.sh;;
@@ -70,7 +71,8 @@ function main_menu() {
                 26) ~/mdwn/commands/btop_operation.sh;;
                 27) ~/mdwn/commands/ssh_operation.sh;;
                 28) ~/mdwn/commands/ftp_operation.sh;;
-                *) echo -e "${red}Invalid option${reset}" ;;
+                29) ~/mdwn/commands/power_operation.sh;;
+                *) echo -e "${red}Invalid option${reset}";;
             esac
             break  # After executing a command, go back to the main menu
         done
