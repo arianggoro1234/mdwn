@@ -39,6 +39,7 @@ function main_menu() {
           "SSH Operation"
           "FTP Operation"
           "Power Operaation"
+          "Screenfetch Monitoring"
         )
         PS3="Choose an option: "
         select _ in "${options[@]}"; do
@@ -72,6 +73,7 @@ function main_menu() {
                 27) ~/mdwn/commands/ssh_operation.sh;;
                 28) ~/mdwn/commands/ftp_operation.sh;;
                 29) ~/mdwn/commands/power_operation.sh;;
+                30) ~/mdwn/commands/screenfetch_operation.sh;;
                 *) echo -e "${red}Invalid option${reset}";;
             esac
             break  # After executing a command, go back to the main menu
