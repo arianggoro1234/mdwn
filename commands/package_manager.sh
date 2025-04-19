@@ -16,6 +16,8 @@ function apt_menu() {
       "Show installed package info (apt show)"
       "Clean cache (sudo apt clean)"
       "Autoremove unused packages (sudo apt autoremove)"
+      "Show Current Ubuntu Version"
+      "Upgrade to Next Ubuntu Release (do-release-upgrade)"
     )
     PS3="Choose an APT command: "
     select _ in "${options[@]}"; do
@@ -30,6 +32,11 @@ function apt_menu() {
             8) read -rp "Package to show: " pkg && apt show "$pkg";;
             9) execute_cmd "sudo apt clean";;
             10) execute_cmd "sudo apt autoremove -y";;
+            11)  echo -e "${green}Ubuntu Version:${reset}"
+                lsb_release -a
+                ;;
+            12) echo -e "${yellow}Launching Ubuntu release upgrade...${reset}"
+                sudo do-release-upgrade;;
             *) echo -e "${red}Invalid option${reset}";;
         esac
     done
