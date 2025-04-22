@@ -79,12 +79,17 @@ function microk8s_menu() {
             30) microk8s inspect;;
             31) 
                 microk8s enable dashboard
+                microk8s enable dashboard-ingress
                 microk8s enable dns
+                microk8s enable ha-cluster  
+                microk8s enable helm
+                microk8s enable helm3
+                microk8s enable storage
+                microk8s enable metrics-server
                 microk8s enable registry
                 microk8s enable istio
                 microk8s enable hostpath-storage
-                microk8s enable ingress
-                microk8s enable metrics-server;;
+                microk8s enable ingress;;
             32) microk8s --help | less;;
             *) echo -e "${red}Invalid option${reset}";;
         esac
