@@ -74,8 +74,8 @@ function microk8s_menu() {
             26) microk8s reset;;
             27) microk8s refresh-certs;;
             28) microk8s update;;
-            29) microk8s inspect;;
-            30) microk8s  kubectl get po -n kube-system;;
+            29) microk8s kubectl get po -n kube-system;;
+            30) microk8s inspect;;
             31) microk8s --help | less;;
             *) echo -e "${red}Invalid option${reset}";;
         esac
