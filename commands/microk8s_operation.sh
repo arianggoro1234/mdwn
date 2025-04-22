@@ -83,7 +83,8 @@ function microk8s_menu() {
                 microk8s enable registry
                 microk8s enable istio
                 microk8s enable hostpath-storage
-                microk8s enable ingress;;
+                microk8s enable ingress
+                microk8s enable metrics-server;;
             32) microk8s --help | less;;
             *) echo -e "${red}Invalid option${reset}";;
         esac
