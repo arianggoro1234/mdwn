@@ -35,6 +35,7 @@ function microk8s_menu() {
       "MicroK8s update"
       "MicroK8s Show kubectl get po -n kube-system"
       "MicroK8s inspect"
+      "MicroK8s enable modul common"
       "Show MicroK8s help"
     )
     PS3="Choose a MicroK8s command: "
@@ -76,7 +77,14 @@ function microk8s_menu() {
             28) microk8s update;;
             29) microk8s kubectl get po -n kube-system;;
             30) microk8s inspect;;
-            31) microk8s --help | less;;
+            31) 
+                microk8s enable dashboard
+                microk8s enable dns
+                microk8s enable registry
+                microk8s enable istio
+                microk8s enable hostpath-storage
+                microk8s enable ingress;;
+            32) microk8s --help | less;;
             *) echo -e "${red}Invalid option${reset}";;
         esac
     done
