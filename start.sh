@@ -43,6 +43,7 @@ function main_menu() {
           "TAR Operation"
           "Webmin Operation"
           "Hestia Operation"
+          "CASAOS Operation"
         )
         PS3="Choose an option: "
         select _ in "${options[@]}"; do
@@ -82,6 +83,7 @@ function main_menu() {
                 33) ~/mdwn/commands/tar_operation.sh;;
                 34) ~/mdwn/commands/webmin_operation.sh;;
                 35) ~/mdwn/commands/hestia_operation.sh;;
+                36) ~/mdwn/commands/casaos.sh;;
                 *) echo -e "${red}Invalid option${reset}";;
             esac
             break
