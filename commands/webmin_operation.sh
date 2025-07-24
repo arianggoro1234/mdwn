@@ -16,7 +16,7 @@ function install_webmin() {
 
     # Add Webmin repository
     curl -o webmin-setup-repo.sh https://raw.githubusercontent.com/webmin/webmin/master/webmin-setup-repo.sh
-    sh webmin-setup-repo.sh
+    sudo sh webmin-setup-repo.sh
 
 
     if dpkg -s webmin >/dev/null 2>&1; then
