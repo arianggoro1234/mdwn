@@ -15,13 +15,9 @@ function install_webmin() {
     fi
 
     # Add Webmin repository
-    echo "Adding Webmin repository..."
-    sudo sh -c 'echo "deb https://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
-    wget -qO - https://www.webmin.com/jcameron-key.asc | sudo apt-key add -
+    curl -o webmin-setup-repo.sh https://raw.githubusercontent.com/webmin/webmin/master/webmin-setup-repo.sh
+    sh webmin-setup-repo.sh
 
-    # Update package list and install Webmin
-    sudo apt update
-    sudo apt install -y webmin
 
     if dpkg -s webmin >/dev/null 2>&1; then
         echo -e "${green}Webmin installed successfully. You can access it at ${webmin_url}${reset}"
