@@ -18,6 +18,7 @@ function install_webmin() {
     curl -o webmin-setup-repo.sh https://raw.githubusercontent.com/webmin/webmin/master/webmin-setup-repo.sh
     sudo sh webmin-setup-repo.sh
 
+    sudo apt-get install webmin --install-recommends
 
     if dpkg -s webmin >/dev/null 2>&1; then
         echo -e "${green}Webmin installed successfully. You can access it at ${webmin_url}${reset}"
