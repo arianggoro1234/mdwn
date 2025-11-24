@@ -44,6 +44,8 @@ function main_menu() {
           "Webmin Operation"
           "Hestia Operation"
           "CASAOS Operation"
+          "Supervisor Operation"
+          "UFW Operation"
         )
         PS3="Choose an option: "
         select _ in "${options[@]}"; do
@@ -84,6 +86,8 @@ function main_menu() {
                 34) ~/mdwn/commands/webmin_operation.sh;;
                 35) ~/mdwn/commands/hestia_operation.sh;;
                 36) ~/mdwn/commands/casaos.sh;;
+                37) ~/mdwn/commands/supervisor.sh;;
+                38) ~/mdwn/commands/ufw.sh;;
                 *) echo -e "${red}Invalid option${reset}";;
             esac
             break
