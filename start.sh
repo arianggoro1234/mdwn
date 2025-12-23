@@ -35,6 +35,8 @@ function main_menu() {
           "PHP 80 Operation"
           "PHP 81 Operation"
           "PHP 82 Operation"
+          "PHP 83 Operation"
+          "PHP 84 Operation"
           "PostgresSQL Operation"
           "Redis Operation"
           "SSH Operation"
@@ -77,17 +79,19 @@ function main_menu() {
                 25) ~/mdwn/commands/php80_operation.sh;;
                 26) ~/mdwn/commands/php81_operation.sh;;
                 27) ~/mdwn/commands/php82_operation.sh;;
-                28) ~/mdwn/commands/postgresql_operation.sh;;
-                29) ~/mdwn/commands/redis_operation.sh;;
-                30) ~/mdwn/commands/ssh_operation.sh;;
-                31) ~/mdwn/commands/composer_operation.sh;;
-                32) ~/mdwn/commands/zip_operation.sh;;
-                33) ~/mdwn/commands/tar_operation.sh;;
-                34) ~/mdwn/commands/webmin_operation.sh;;
-                35) ~/mdwn/commands/hestia_operation.sh;;
-                36) ~/mdwn/commands/casaos.sh;;
-                37) ~/mdwn/commands/supervisor.sh;;
-                38) ~/mdwn/commands/ufw.sh;;
+                28) ~/mdwn/commands/php83_operation.sh;;
+                29) ~/mdwn/commands/php84_operation.sh;;
+                30) ~/mdwn/commands/postgresql_operation.sh;;
+                31) ~/mdwn/commands/redis_operation.sh;;
+                32) ~/mdwn/commands/ssh_operation.sh;;
+                33) ~/mdwn/commands/composer_operation.sh;;
+                34) ~/mdwn/commands/zip_operation.sh;;
+                35) ~/mdwn/commands/tar_operation.sh;;
+                36) ~/mdwn/commands/webmin_operation.sh;;
+                37) ~/mdwn/commands/hestia_operation.sh;;
+                38) ~/mdwn/commands/casaos.sh;;
+                39) ~/mdwn/commands/supervisor.sh;;
+                40) ~/mdwn/commands/ufw.sh;;
                 *) echo -e "${red}Invalid option${reset}";;
             esac
             break
