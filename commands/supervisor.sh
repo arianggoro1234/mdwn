@@ -3,10 +3,10 @@
 # shellcheck source=./lib/alacarte.sh
 source "$(dirname "$0")/lib/alacarte.sh"
 
-# Function to handle the installation and configuration part
+# Function to handle the installation part
 install_supervisor() {
     print_start
-    echo -e "${green}--- Install/Reconfigure Supervisor ---\nThis will install supervisor if not present, and configure the web UI.${reset}"
+    echo -e "${green}--- Install Supervisor ---\nThis will install supervisor if not present.${reset}"
     
     # Check if Supervisor is already installed
     if ! command -v supervisorctl &> /dev/null; then
@@ -17,11 +17,28 @@ install_supervisor() {
     else
         echo "Supervisor is already installed."
     fi
+    
+    print_end
+    read -rp "Press Enter to return to menu..."
+}
+
+# Function to handle the Web UI configuration
+configure_web_ui() {
+    print_start
+    echo -e "${green}--- Configure Supervisor Web UI ---\nThis will configure the web interface for Supervisor.${reset}"
+
+    if ! command -v supervisorctl &> /dev/null; then
+        echo -e "${red}Supervisor is not installed. Please install it first.${reset}"
+        print_end
+        read -rp "Press Enter to return to menu..."
+        return
+    fi
 
     echo
     echo "--- Configuring Supervisor Web UI ---"
     read -p "Enter a username for the web UI: " SUPERVISOR_USER
     read -sp "Enter a password for the web UI: " SUPERVISOR_PASS
+    echo
     echo
 
     if [ -z "$SUPERVISOR_USER" ] || [ -z "$SUPERVISOR_PASS" ]; then
@@ -57,19 +74,19 @@ EOF
     read -rp "Press Enter to return to menu..."
 }
 
-
 # Main menu function for supervisor operations
 supervisor_operation() {
     while true; do
         echo -e "\n${yellow}--- Supervisor Operation Menu ---${reset}"
         echo "  1) Back to Main Menu"
-        echo "  2) Install/Reconfigure Supervisor"
-        echo "  3) Show Status"
-        echo "  4) Start a Process"
-        echo "  5) Stop a Process"
-        echo "  6) Restart a Process"
-        echo "  7) Reread Config Files"
-        echo "  8) Update Process Groups"
+        echo "  2) Install Supervisor"
+        echo "  3) Configure Web UI"
+        echo "  4) Show Status"
+        echo "  5) Start a Process"
+        echo "  6) Stop a Process"
+        echo "  7) Restart a Process"
+        echo "  8) Reread Config Files"
+        echo "  9) Update Process Groups"
         
         read -rp "Enter your choice: " choice
 
@@ -81,9 +98,12 @@ supervisor_operation() {
                 install_supervisor
                 ;; 
             3)
+                configure_web_ui
+                ;;
+            4)
                 execute_cmd "sudo supervisorctl status"
                 ;; 
-            4)
+            5)
                 read -rp "Enter process name (or 'all'): " app_name
                 if [ -n "$app_name" ]; then
                     execute_cmd "sudo supervisorctl start $app_name"
@@ -91,7 +111,7 @@ supervisor_operation() {
                     echo -e "${red}Process name cannot be empty.${reset}"
                 fi
                 ;; 
-            5)
+            6)
                 read -rp "Enter process name (or 'all'): " app_name
                 if [ -n "$app_name" ]; then
                     execute_cmd "sudo supervisorctl stop $app_name"
@@ -99,7 +119,7 @@ supervisor_operation() {
                     echo -e "${red}Process name cannot be empty.${reset}"
                 fi
                 ;; 
-            6)
+            7)
                 read -rp "Enter process name (or 'all'): " app_name
                 if [ -n "$app_name" ]; then
                     execute_cmd "sudo supervisorctl restart $app_name"
@@ -107,16 +127,16 @@ supervisor_operation() {
                     echo -e "${red}Process name cannot be empty.${reset}"
                 fi
                 ;; 
-            7)
+            8)
                 execute_cmd "sudo supervisorctl reread"
                 ;; 
-            8)
+            9)
                 execute_cmd "sudo supervisorctl update"
                 ;; 
             *)
                 echo -e "${red}Invalid option. Please try again.${reset}"
                 ;; 
-esac
+        esac
     done
 }
 
