@@ -76,7 +76,7 @@ function composer_menu() {
                 then
                     echo "Composer not found. Installing Composer..."
                     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-                    php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+                    sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
                     echo "Composer installed globally in /usr/local/bin/composer"
                     rm composer-setup.php
                 else
@@ -87,7 +87,7 @@ function composer_menu() {
                 if command -v composer &> /dev/null
                 then
                     echo "Updating Composer..."
-                    composer self-update
+                    sudo composer self-update
                 else
                     echo "Composer is not installed. Please choose option 3 to install."
                 fi
