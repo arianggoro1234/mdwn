@@ -48,6 +48,7 @@ function main_menu() {
           "CASAOS Operation"
           "Supervisor Operation"
           "UFW Operation"
+          "NVM Operation"
         )
         PS3="Choose an option: "
         select _ in "${options[@]}"; do
@@ -92,6 +93,7 @@ function main_menu() {
                 38) ~/mdwn/commands/casaos.sh;;
                 39) ~/mdwn/commands/supervisor.sh;;
                 40) ~/mdwn/commands/ufw.sh;;
+                41) ~/mdwn/commands/nvm.sh;;
                 *) echo -e "${red}Invalid option${reset}";;
             esac
             break
