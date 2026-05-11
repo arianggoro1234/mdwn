@@ -50,6 +50,7 @@ function main_menu() {
           "Supervisor Operation"
           "UFW Operation"
           "NVM Operation"
+          "Aria2 Downloader"
         )
         PS3="Choose an option: "
         select _ in "${options[@]}"; do
@@ -96,6 +97,7 @@ function main_menu() {
                 40) ~/mdwn/commands/supervisor.sh;;
                 41) ~/mdwn/commands/ufw.sh;;
                 42) ~/mdwn/commands/nvm.sh;;
+                43) ~/mdwn/commands/aria2_downloader.sh;;
                 *) echo -e "${red}Invalid option${reset}";;
             esac
             break
